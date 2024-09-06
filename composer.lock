@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee722375e5b91161f96cd5a25fb71a4a",
+    "content-hash": "ff27c929c2646aee9d9cb9ac0c8059c2",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -80,6 +80,137 @@
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
             "time": "2024-04-07T02:46:05+00:00"
+        },
+        {
+            "name": "codeigniter4/settings",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeigniter4/settings.git",
+                "reference": "2748f2b4572d44a940f98c31847d65272cac5666"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeigniter4/settings/zipball/2748f2b4572d44a940f98c31847d65272cac5666",
+                "reference": "2748f2b4572d44a940f98c31847d65272cac5666",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "codeigniter4/devkit": "^1.1.2",
+                "codeigniter4/framework": "^4.2.3",
+                "rector/rector": "0.18.13"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CodeIgniter\\Settings\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lonnie Ezell",
+                    "email": "lonnieje@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Settings library for CodeIgniter 4",
+            "homepage": "https://github.com/codeigniter4/settings",
+            "keywords": [
+                "Settings",
+                "codeigniter",
+                "codeigniter4"
+            ],
+            "support": {
+                "issues": "https://github.com/codeigniter4/settings/issues",
+                "source": "https://github.com/codeigniter4/settings/tree/v2.2.0"
+            },
+            "time": "2024-01-06T07:10:58+00:00"
+        },
+        {
+            "name": "codeigniter4/shield",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeigniter4/shield.git",
+                "reference": "4170cdfbaefa71b4688e43ff625d29891226bca5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/4170cdfbaefa71b4688e43ff625d29891226bca5",
+                "reference": "4170cdfbaefa71b4688e43ff625d29891226bca5",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/settings": "^2.1",
+                "php": "^7.4.3 || ^8.0"
+            },
+            "provide": {
+                "codeigniter4/authentication-implementation": "1.0"
+            },
+            "require-dev": {
+                "codeigniter/coding-standard": "1.7.*",
+                "codeigniter/phpstan-codeigniter": "^1.3",
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": ">=4.3.5 <4.5.0 || ^4.5.1",
+                "firebase/php-jwt": "^6.4",
+                "mikey179/vfsstream": "^1.6.7",
+                "mockery/mockery": "^1.0",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "phpunit/phpunit": "^9.6",
+                "rector/rector": "1.2.4"
+            },
+            "suggest": {
+                "ext-curl": "Required to use the password validation rule via PwnedValidator class.",
+                "ext-openssl": "Required to use the JWT Authenticator."
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CodeIgniter\\Shield\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lonnie Ezell",
+                    "email": "lonnieje@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Authentication and Authorization for CodeIgniter 4",
+            "homepage": "https://github.com/codeigniter4/shield",
+            "keywords": [
+                "Authentication",
+                "authorization",
+                "codeigniter",
+                "codeigniter4"
+            ],
+            "support": {
+                "docs": "https://codeigniter4.github.io/shield/",
+                "forum": "https://github.com/codeigniter4/shield/discussions",
+                "issues": "https://github.com/codeigniter4/shield/issues",
+                "slack": "https://codeigniterchat.slack.com",
+                "source": "https://github.com/codeigniter4/shield"
+            },
+            "time": "2024-08-28T00:14:59+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -193,6 +324,60 @@
                 "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
             "time": "2021-05-03T11:20:27+00:00"
+        },
+        {
+            "name": "simpletine/hmvc-shield",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Simpletine/CodeIgniter4-HMVC-Shield.git",
+                "reference": "a6ca6eaaade5a2f5cad14791e0bd0a5023aedc3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Simpletine/CodeIgniter4-HMVC-Shield/zipball/a6ca6eaaade5a2f5cad14791e0bd0a5023aedc3e",
+                "reference": "a6ca6eaaade5a2f5cad14791e0bd0a5023aedc3e",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/framework": "^4.0",
+                "codeigniter4/shield": "dev-develop",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "codeigniter/coding-standard": "^1.7",
+                "fakerphp/faker": "^1.23.1",
+                "mikey179/vfsstream": "^1.6",
+                "phpstan/phpstan": "2.0.x-dev",
+                "phpunit/phpunit": "^9.1",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ],
+                "psr-4": {
+                    "Simpletine\\HMVCShield\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SimpleTine",
+                    "email": "info@simpletine.com"
+                }
+            ],
+            "description": "Features a modular HMVC (Hierarchical Model-View-Controller) architecture for CodeIgniter 4, integrated CodeIgniter 4 Shield and built with AdminLTE, providing a robust foundation for scalable web applications.",
+            "support": {
+                "issues": "https://github.com/Simpletine/CodeIgniter4-HMVC-Shield/issues",
+                "source": "https://github.com/Simpletine/CodeIgniter4-HMVC-Shield/tree/v1.3.0"
+            },
+            "time": "2024-08-10T05:12:17+00:00"
         }
     ],
     "packages-dev": [
