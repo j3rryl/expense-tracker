@@ -89,6 +89,19 @@ class Expenses extends BaseController
     }
 
     
+    public function archived()
+    {
+        $this->data['expenses'] = $this->model->getArchived();
+        $this->data['categories'] = $this->categories->findAll();
+        
+        $this->data['page_title'] = 'Expenses';
+        $this->data['page_header'] = 'Expenses';
+        $this->data['contents'] = [
+            $this->folder_directory . 'archived-expenses',
+        ];
+        return self::render();
+    }
+    
     public function view($id)
     {
         $this->data['expense'] = $this->model->find($id);
@@ -99,19 +112,6 @@ class Expenses extends BaseController
         ];
         return self::render();
     }
-    public function archived()
-    {
-        $this->data['expenses'] = $this->model->getArchived();
-        $this->data['categories'] = $this->categories->findAll();
-
-        $this->data['page_title'] = 'Expenses';
-        $this->data['page_header'] = 'Expenses';
-        $this->data['contents'] = [
-            $this->folder_directory . 'archived-expenses',
-        ];
-        return self::render();
-    }
-
     public function index()
     {
         $this->data['expenses'] = $this->model->getExpensesWithCategories(true);
