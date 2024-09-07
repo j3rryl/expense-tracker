@@ -123,17 +123,36 @@ php spark serve
 ```
 
 2. **Open localhost:8080**
-   The project should be running here.
 
-3. **Login as as administrator**
-   To log in as an administrator, use the following credentials:  
+- The project should be running here.
+
+  ![alt text](image-10.png)
+
+3. **Click login to login**
+
+   ![alt text](image-11.png)
+
+4. **Login as as administrator**
+
+- To log in as an administrator, use the following credentials:  
    `email: super@admin.com`  
    `password: password`
 
-4. **Login as a normal user**
-   To log in as a norma user, use the following credentials:  
+  ![alt text](image-9.png)
+
+5. **Login as a normal user**
+
+- To log in as a norma user, use the following credentials:  
    `email: normal@normal.com`  
    `password: password`
+
+  ![alt text](image-12.png)
+
+6. **Create an expense**
+
+- To create an expense go to expenses page and click `New Expense`.
+
+  ![alt text](image-13.png)
 
 ## Technologies Used
 
