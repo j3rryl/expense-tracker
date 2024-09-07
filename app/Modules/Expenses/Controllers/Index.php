@@ -29,7 +29,9 @@ class Index extends BaseController
             'name' => 'required|string',
             'amount' => 'required|numeric',
             'category_id' => 'required|integer',
-            'user_id' => 'required|integer'
+            'user_id' => 'required|integer',
+            'date' => 'required',
+            'description' => 'required'
         ]);
 
         if (! $this->validate($validation->getRules())) {
@@ -41,7 +43,9 @@ class Index extends BaseController
             'name' => $this->request->getPost('name'),
             'amount' => $this->request->getPost('amount'),
             'category_id' => $this->request->getPost('category_id'),
-            'user_id' => $this->request->getPost('user_id')
+            'user_id' => $this->request->getPost('user_id'),
+            'date' => $this->request->getPost('date'),
+            'description' => $this->request->getPost('description')
         ];
 
         if ($this->model->save($data)) {
@@ -57,7 +61,9 @@ class Index extends BaseController
         $validation->setRules([
             'name' => 'required|string',
             'amount' => 'required|numeric',
-            'category_id' => 'required|integer'
+            'category_id' => 'required|integer',
+            'date' => 'required',
+            'description' => 'required'
         ]);
 
         if (! $this->validate($validation->getRules())) {
@@ -70,6 +76,8 @@ class Index extends BaseController
             'name' => $this->request->getPost('name'),
             'amount' => $this->request->getPost('amount'),
             'category_id' => $this->request->getPost('category_id'),
+            'date' => $this->request->getPost('date'),
+            'description' => $this->request->getPost('description')
         ];
 
         if ($this->model->save($data)) {

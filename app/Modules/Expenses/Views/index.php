@@ -18,6 +18,8 @@
             <th scope="col">Name</th>
             <th scope="col">Amount</th>
             <th scope="col">Category</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
             <th scope="col">Created At</th>
             <th scope="col">Action</th>
             </tr>
@@ -29,6 +31,8 @@
             <td><?php echo $expense['name']; ?></td>
             <td><?php echo number_format($expense['amount'],2); ?></td>
             <td><?php echo $expense['category_name']; ?></td>
+            <td><?php echo $expense['date']; ?></td>
+            <td><?php echo substr($expense['description'], 0, 20). '...'; ?></td>
             <td>
                 <?php 
                 $date = new DateTime($expense['created_at']);
@@ -38,6 +42,7 @@
             </td>
             <td>
                 <div class="d-flex justify-content-start align-items-center gap-3">
+                <button type="button" class="btn btn-primary"><i class="bi bi-eye me-1"></i></button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<?php echo $expense['id']; ?>"><i class="bi bi-pencil-square me-1"></i></button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $expense['id']; ?>"><i class="bi bi-trash me-1"></i></button>
 
@@ -98,8 +103,18 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-
+                                <div class="col-6 mb-3">
+                                    <label for="inputNanme4" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="inputNanme4" name="date"  value="<?php echo $expense['date']; ?>"required>
+                                </div>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col-12 mb-3">
+                                <label for="inputNanme4" class="form-label">Description</label>
+                                <textarea class="form-control" id="inputNanme4" name="description"><?php echo $expense['description']; ?></textarea>
+                                </div>
+                            </div>
+
                             <div class="d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save</button>
@@ -147,7 +162,16 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-
+                    <div class="col-6 mb-3">
+                        <label for="inputNanme4" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="inputNanme4" name="date" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12 mb-3">
+                    <label for="inputNanme4" class="form-label">Description</label>
+                    <textarea class="form-control" id="inputNanme4" name="description"></textarea>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

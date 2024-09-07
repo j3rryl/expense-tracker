@@ -25,6 +25,14 @@ class CreateExpensesTable extends Migration
                 'type' => 'DECIMAL',
                 'constraint' => '10,2',  
             ],
+            'description' => [
+                'type' => 'TEXT',
+                'null' => true
+            ],
+            'date' => [
+                'type' => 'DATE',
+                'null' => true 
+            ],
             'created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL',
             'updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
             'deleted_at' => [
