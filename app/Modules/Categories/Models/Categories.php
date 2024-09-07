@@ -9,5 +9,5 @@ class Categories extends Model
     protected $table            = 'st_categories';
     protected $useTimestamps    = true;
     protected $useSoftDeletes   = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ["name"];
 }
