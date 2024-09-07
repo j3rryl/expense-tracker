@@ -42,7 +42,7 @@
             </td>
             <td>
                 <div class="d-flex justify-content-start align-items-center gap-3">
-                <button type="button" class="btn btn-primary"><i class="bi bi-eye me-1"></i></button>
+                <a role="button" href="/expenses/view/<?php echo $expense['id']; ?>" class="btn btn-primary"><i class="bi bi-eye me-1"></i></a>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<?php echo $expense['id']; ?>"><i class="bi bi-pencil-square me-1"></i></button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $expense['id']; ?>"><i class="bi bi-trash me-1"></i></button>
 

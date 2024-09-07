@@ -107,6 +107,16 @@ class Index extends BaseController
         ];
         return self::render('index');
     }
+    public function view($id)
+    {
+        $this->data['expense'] = $this->model->find($id);
+        $this->data['page_title'] = 'Expenses';
+        $this->data['page_header'] = 'Expenses';
+        $this->data['contents'] = [
+            $this->folder_directory . 'view',
+        ];
+        return self::render('view');
+    }
 
     public function render(string $page): string
     {
