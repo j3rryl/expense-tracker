@@ -440,13 +440,21 @@ class Auth extends ShieldAuth
         $sessionData = session()->get();
         $userId = $sessionData['user']["id"];
         $authGroupUserModel = new \App\Models\AuthGroupUserModel();
+        $userModel = new \App\Models\UserModel();
+
+        $user = $userModel->getUser($userId);
         $userGroup = $authGroupUserModel->getUserGroup($userId);
 
         if (isset($userGroup) && $userGroup['group'] == "user") {
-            $url = $session->getTempdata('beforeLoginUrl') ?? setting('Auth.redirects')['login'];
+            $url = "/dashboard";
         } else {
             $url = "/admin/dashboard";
         }
+        $session->set([
+            'name' => $user['name'],      
+            'user_name' => $user['username'],
+            'user_group' => $userGroup['group'], 
+        ]);
         return $this->getUrl($url);
     }
 
