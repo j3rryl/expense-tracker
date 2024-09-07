@@ -11,13 +11,17 @@ class Activities extends Model
     protected $useSoftDeletes   = true;
     protected $allowedFields    = ["activity", "user_id"];
 
-    public function getActivities()
+    public function getActivities($admin=null)
     {
         $userId = session()->get("user_id");
-        return $this->select('activities.*, users.username as user_name')
+        $builder = $this->select('activities.*, users.username as user_name')
                 ->join('users', 'activities.user_id = users.id', 'left')
-                ->where('activities.user_id', $userId)
-                ->orderBy('created_at', 'DESC') 
-                ->findAll(8);
+                ->orderBy('created_at', 'DESC'); 
+
+        if ($admin === null) {
+            $builder->where('activities.user_id', $userId);
+        }
+        
+        return $builder->findAll(8);
     }
 }
