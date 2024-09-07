@@ -12,6 +12,7 @@ class Index extends BaseController
     protected $parent_directory = "Modules\\Views\\index";
     protected $folder_directory = "Modules\\Expenses\\Views\\";
     protected $model;
+    protected $activities;
     protected $categories;
     protected $data = [];
     protected $rules = [];
