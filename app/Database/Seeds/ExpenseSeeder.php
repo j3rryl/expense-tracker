@@ -3,6 +3,7 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use App\Modules\Activities\Models\Activities;
 use App\Modules\Expenses\Models\Expenses;
 use App\Modules\Categories\Models\Categories;
 use App\Models\UserModel;
@@ -16,6 +17,7 @@ class ExpenseSeeder extends Seeder
         //
         $faker = Faker::create();
 
+        $activities = new Activities();
         $expenses = new Expenses();
         $categoryModel = new Categories();
         $userModel = new UserModel();
@@ -24,7 +26,13 @@ class ExpenseSeeder extends Seeder
         $categories = $categoryModel->findAll();
 
         foreach ($users as $user) {
-            for ($i = 0; $i < rand(3, 7); $i++) {
+            $minExpense = 3;
+            if($user['username']=='normal') {
+                $minExpense = 6;
+            } else {
+                $minExpense = 3;
+            }
+            for ($i = 0; $i < rand($minExpense, 7); $i++) {
                 $data = [
                     'name'        => $faker->sentence(3), 
                     'amount'      => $faker->randomFloat(2, 1000, 50000), 
@@ -39,5 +47,10 @@ class ExpenseSeeder extends Seeder
                 $this->db->table('expenses')->insert($data);
             }
         }
+
+        $activities->save([
+            "user_id"=> 1,
+            "activity"=> "added new expenses for users"
+        ]);
     }
 }

@@ -28,6 +28,16 @@ class UserSeeder extends Seeder
             $user->addGroup('user');
 
         }
+
+        $user = new User([
+            'username' => "normal",
+            'email'    => "normal@gmail.com",
+            'password' => 'password',
+        ]);
+        $users->save($user);
+        $user = $users->findById($users->getInsertID());
+        $user->addGroup('user');
+        
         $activities->save([
             "user_id"=> 1,
             "activity"=> "created new users"
