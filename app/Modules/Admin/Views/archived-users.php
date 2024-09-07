@@ -47,7 +47,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="g-3" method="post" action="<?= site_url('admin/users/remove/' . $user['id']) ?>">
+                        <form class="g-3" method="post" action="<?= site_url('admin/users/delete/' . $user['id']) ?>">
                             <?= csrf_field() ?>
                             <p class="mb-3">Are you sure you want to permanently delete this user? THIS ACTION CANNOT BE UNDONE!!!</p>
                             <div class="d-flex justify-content-between">
@@ -69,7 +69,7 @@
                     <div class="modal-body">
                         <form class="g-3" method="post" action="<?= site_url('admin/users/restore/' . $user['id']) ?>">
                             <?= csrf_field() ?>
-                            <p class="mb-3">Are you sure you want to permanently restore this user?</p>
+                            <p class="mb-3">Are you sure you want to restore this user?</p>
                             <div class="d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save</button>

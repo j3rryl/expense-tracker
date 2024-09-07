@@ -52,7 +52,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="g-3" method="post" action="<?= site_url('admin/users/delete/' . $user['id']) ?>">
+                        <form class="g-3" method="post" action="<?= site_url('admin/users/archive/' . $user['id']) ?>">
                             <?= csrf_field() ?>
                             <p class="mb-3">Are you sure you want to remove this user ?</p>
                             <div class="d-flex justify-content-between">

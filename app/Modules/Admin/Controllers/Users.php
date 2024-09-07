@@ -56,7 +56,7 @@ class Users extends BaseController
         }
     }
 
-    public function delete($id)
+    public function archive($id)
     {
         if ($this->users->delete($id)) {
         $userId = session()->get("user_id");
@@ -70,7 +70,7 @@ class Users extends BaseController
         }
     }
 
-    public function remove($id)
+    public function delete($id)
     {
         if ($this->users->where('id', $id)->purgeDeleted()) {
         $userId = session()->get("user_id");
