@@ -11,7 +11,6 @@ class SuperAdminSeeder extends Seeder
         //Create user
         $data = array(
             "username"=>"superadmin",
-            "name"=>"Super Admin",
         );
         
         $builder = $this->db->table('users');

@@ -4,6 +4,7 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use App\Modules\Categories\Models\Categories;
+use App\Modules\Activities\Models\Activities;
 
 class CategorySeeder extends Seeder
 {
@@ -11,6 +12,7 @@ class CategorySeeder extends Seeder
     {
         //
         $categoryModel = new Categories();
+        $activities = new Activities();
         $categories = [
             ['name' =>'Food & Dining'],
             ['name' =>'Transportation'],
@@ -26,5 +28,9 @@ class CategorySeeder extends Seeder
 
         // Insert categories
         $categoryModel->insertBatch($categories);
+        $activities->save([
+            "user_id"=> 1,
+            "activity"=> "added new categories."
+        ]);
     }
 }
