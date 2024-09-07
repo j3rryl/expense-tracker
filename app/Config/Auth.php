@@ -456,6 +456,12 @@ class Auth extends ShieldAuth
             'user_name' => $user['username'],
             'user_group' => $userGroup['group'], 
         ]);
+        $activities = new \App\Modules\Activities\Models\Activities();
+
+        $activities->save([
+            "user_id"=>$user['id'],
+            "activity"=> "logged in"
+        ]);
         return $this->getUrl($url);
     }
 

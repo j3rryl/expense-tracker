@@ -5,6 +5,7 @@ namespace App\Modules\Expenses\Controllers;
 use App\Controllers\BaseController;
 use App\Modules\Expenses\Models\Expenses;
 use App\Modules\Categories\Models\Categories;
+use App\Modules\Activities\Models\Activities;
 
 class Index extends BaseController
 {
@@ -19,6 +20,7 @@ class Index extends BaseController
     {
         $this->model = new Expenses;
         $this->categories = new Categories;
+        $this->activities = new Activities;
     }
 
     public function save()
@@ -49,6 +51,10 @@ class Index extends BaseController
         ];
 
         if ($this->model->save($data)) {
+            $this->activities->save([
+                "user_id"=>$this->request->getPost('user_id'),
+                "activity"=> "created an expense"
+            ]);
             return redirect()->to('/expenses')->with('message', 'Expense saved successfully.');
         } else {
             return redirect()->back()->withInput()->with('error', 'Failed to save expense.');
@@ -81,6 +87,11 @@ class Index extends BaseController
         ];
 
         if ($this->model->save($data)) {
+            $userId = session()->get("user_id");
+            $this->activities->save([
+                "user_id"=>$userId,
+                "activity"=> "updated an expense"
+            ]);
             return redirect()->to('/expenses')->with('message', 'Expense saved successfully.');
         } else {
             return redirect()->back()->withInput()->with('error', 'Failed to save expense.');
@@ -90,6 +101,11 @@ class Index extends BaseController
     public function delete($id)
     {
         if ($this->model->delete($id)) {
+        $userId = session()->get("user_id");
+            $this->activities->save([
+                "user_id"=>$userId,
+                "activity"=> "deleted an expense"
+            ]);
             return redirect()->to('/expenses')->with('message', 'Expense deleted successfully.');
         } else {
             return redirect()->back()->with('error', 'Failed to delete expense.');

@@ -14,8 +14,10 @@ class Activities extends Model
     public function getActivities()
     {
         $userId = session()->get("user_id");
-        return $this->where('activities.user_id', $userId)
+        return $this->select('activities.*, users.username as user_name')
+                ->join('users', 'activities.user_id = users.id', 'left')
+                ->where('activities.user_id', $userId)
                 ->orderBy('created_at', 'DESC') 
-                ->findAll(6);
+                ->findAll(8);
     }
 }
