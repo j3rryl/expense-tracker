@@ -303,6 +303,12 @@
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
+    <?= show_errors() ?>
+    <?php if (session('message') !== null) : ?>
+      <div class="alert alert-success" role="alert"><?= session('message') ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php endif ?>
     <?php if (isset($contents) && is_array($contents)) :
         foreach ($contents as $content) {
             echo view($content);

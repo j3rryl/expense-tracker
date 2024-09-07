@@ -20,6 +20,8 @@ class Index extends BaseController
 
     public function index()
     {
+        $this->data['categories'] = $this->model->findAll();
+        
         $this->data['page_title'] = 'Categories';
         $this->data['page_header'] = 'Categories';
         $this->data['contents'] = [

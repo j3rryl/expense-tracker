@@ -451,6 +451,7 @@ class Auth extends ShieldAuth
             $url = "/admin/dashboard";
         }
         $session->set([
+            'user_id' => $user['id'],      
             'name' => $user['name'],      
             'user_name' => $user['username'],
             'user_group' => $userGroup['group'], 
