@@ -20,4 +20,5 @@ class Expenses extends Model
                     ->orderBy('expenses.created_at', 'DESC')
                     ->findAll();
     }
+    
 }

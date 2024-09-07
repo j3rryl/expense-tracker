@@ -6,3 +6,6 @@ Profile settings
 
 php spark db:seed SuperAdminSeeder
 php spark migrate
+
+
+Pagination
