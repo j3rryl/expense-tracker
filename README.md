@@ -51,6 +51,12 @@ This project utilizes [CodeIgniter Query Builder](https://codeigniter.com/user_g
    cp .env.example .env
    ```
 
+   If you are using windows use:
+
+   ```bash
+   copy .env.example .env
+   ```
+
 2. **Setup Simpletine:**
    Run the following command but **`cautiously`** so as to not overwrite existing configurations:
 
@@ -115,25 +121,31 @@ This project utilizes [CodeIgniter Query Builder](https://codeigniter.com/user_g
 
 ## Running the Project
 
-To run the project in development mode:
+To run the project:
 
-1. **Start the Codeigniter server:**
+1. Start Apache and MySQL
+
+- Open XAMPP Control Panel: Launch the XAMPP Control Panel from your XAMPP installation directory.
+- Start Apache: Click the "Start" button next to Apache to start the web server.
+- Start MySQL: Click the "Start" button next to MySQL to start the database server.
+
+2. **Start the Codeigniter server:**
 
 ```bash
 php spark serve
 ```
 
-2. **Open localhost:8080**
+3. **Open localhost:8080**
 
 - The project should be running here.
 
   ![alt text](image-10.png)
 
-3. **Click login to login**
+4. **Click login to login**
 
    ![alt text](image-11.png)
 
-4. **Login as as administrator**
+5. **Login as as administrator**
 
 - To log in as an administrator, use the following credentials:  
    `email: super@admin.com`  
@@ -141,7 +153,7 @@ php spark serve
 
   ![alt text](image-9.png)
 
-5. **Login as a normal user**
+6. **Login as a normal user**
 
 - To log in as a norma user, use the following credentials:  
    `email: normal@normal.com`  
@@ -149,7 +161,7 @@ php spark serve
 
   ![alt text](image-12.png)
 
-6. **Create an expense**
+7. **Create an expense**
 
 - To create an expense go to expenses page and click `New Expense`.
 
