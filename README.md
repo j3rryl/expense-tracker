@@ -50,14 +50,21 @@ This project utilizes [Codeigniter Query Builder](https://codeigniter.com/user_g
    cp .env.example .env
    ```
 
-2. **Running the migrations:**
+2. **Setup Simpletine:**
+   Run the following command but **`cautiously`** so as to not overwrite existing configurations:
+
+   ```bash
+   php spark simpletine:setup
+   ```
+
+3. **Running the migrations:**
    To apply all pending migrations and set up the initial database schema, run:
 
    ```bash
    php spark migrate
    ```
 
-3. **Seeding the database:**
+4. **Seeding the database:**
    To populate the database with seed data, use:
 
    ```bash
