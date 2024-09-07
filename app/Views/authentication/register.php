@@ -70,7 +70,7 @@
                       <button class="btn btn-primary w-100" type="submit"><?= lang('Auth.register') ?></button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0"><?= lang('Auth.haveAccount') ?> <a href="<?= url_to('login') ?>"><?= lang('Auth.login') ?></a></p>
+                      <p class="small mb-0"><?= lang('Auth.haveAccount') ?> <a class="text-primary" href="<?= url_to('login') ?>"><?= lang('Auth.login') ?></a></p>
                     </div>
                   </form>
 

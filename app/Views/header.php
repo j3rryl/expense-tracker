@@ -21,7 +21,7 @@
         <link href="/assets/libs/simple-datatables/style.css" rel="stylesheet">
 
         <!-- Template Main CSS File -->
-        <link href="/assets/css/landing.css" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet">
 
         <!-- CSS Files -->
         <?php if (isset($css) && is_array($css)) {
