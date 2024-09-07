@@ -21,6 +21,19 @@ class Categories extends BaseController
 
     }
 
+    public function archive($id)
+    {
+        if ($this->model->delete($id)) {
+        $userId = session()->get("user_id");
+            $this->activities->save([
+                "user_id"=>$userId,
+                "activity"=> "archived a user"
+            ]);
+            return redirect()->to('/admin/categories')->with('message', 'Category archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to archive category.');
+        }
+    }
     public function delete($id)
     {
         if ($this->model->where('id', $id)->purgeDeleted()) {
@@ -42,7 +55,7 @@ class Categories extends BaseController
                 "user_id"=>$userId,
                 "activity"=> "restored a category"
             ]);
-            return redirect()->to('/admin/archived/categories')->with('message', 'catehory restored successfully.');
+            return redirect()->to('/admin/archived/categories')->with('message', 'Category restored successfully.');
         } else {
             return redirect()->back()->with('error', 'Failed to update category.');
         }
