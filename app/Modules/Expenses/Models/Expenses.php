@@ -20,5 +20,14 @@ class Expenses extends Model
                     ->orderBy('expenses.created_at', 'DESC')
                     ->findAll();
     }
+
+    public function getMonthlySums()
+    {
+        $userId = session()->get("user_id");
+        return $this->select('SUM(amount) as total_amount, category_id, DATE_FORMAT(date, "%Y-%m") as month')
+                    ->where('expenses.user_id', $userId)
+                    ->groupBy('category_id, month')
+                    ->findAll();
+    }
     
 }
