@@ -28,6 +28,19 @@ class Expenses extends Model
         
         return $builder->findAll();
     }
+
+    public function getExpensesByUser($id)
+    {    
+        // Start building the query
+        $builder = $this->select('expenses.*, categories.name as category_name, users.username as user_name')
+                        ->where('expenses.user_id', $id)
+                        ->join('users', 'expenses.user_id = users.id', 'left')
+                        ->join('categories', 'expenses.category_id = categories.id', 'left')
+                        ->orderBy('expenses.created_at', 'DESC');
+        
+        return $builder->findAll();
+    }
+    
     public function getArchived($admin=null)
     {
     

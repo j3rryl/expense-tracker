@@ -5,11 +5,16 @@ namespace App\Modules\Admin\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Modules\Activities\Models\Activities;
+use App\Modules\Expenses\Models\Expenses;
+use App\Modules\Categories\Models\Categories;
 
 class Users extends BaseController
 {
     protected $folder_directory = "Modules\\Admin\\Views\\";
     protected $users;
+    protected $activities;
+    protected $expenses;
+    protected $categories;
     protected $data = [];
     protected $rules = [];
 
@@ -17,6 +22,8 @@ class Users extends BaseController
     {
         $this->users = new UserModel;
         $this->activities = new Activities;
+        $this->expenses = new Expenses;
+        $this->categories = new Categories;
 
     }
 
@@ -108,6 +115,21 @@ class Users extends BaseController
         $this->data['page_header'] = 'Users';
         $this->data['contents'] = [
             $this->folder_directory . 'archived-users',
+        ];
+        return self::render();
+    }
+    public function view($id)
+    {
+        if(!user_id()) {
+            return redirect()->route('login');
+        }
+        $this->data['expenses'] = $this->expenses->getExpensesByUser($id);
+        $this->data['categories'] = $this->categories->findAll();
+
+        $this->data['page_title'] = 'Admin - Users';
+        $this->data['page_header'] = 'User Expenses';
+        $this->data['contents'] = [
+            $this->folder_directory . 'expenses',
         ];
         return self::render();
     }
