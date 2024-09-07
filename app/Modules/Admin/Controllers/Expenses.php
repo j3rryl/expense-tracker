@@ -63,15 +63,28 @@ class Expenses extends BaseController
 
     public function delete($id)
     {
-        if ($this->model->delete($id)) {
+        if ($this->model->where('id', $id)->purgeDeleted()) {
         $userId = session()->get("user_id");
             $this->activities->save([
                 "user_id"=>$userId,
                 "activity"=> "deleted a user's expense"
             ]);
-            return redirect()->to('/admin/expenses')->with('message', 'Expense deleted successfully.');
+            return redirect()->to('/admin/archived/expenses')->with('message', 'Expense deleted successfully.');
         } else {
             return redirect()->back()->with('error', 'Failed to delete expense.');
+        }
+    }
+    public function restore($id)
+    {
+        if ($this->model->update($id, ['deleted_at' => null])) {
+        $userId = session()->get("user_id");
+            $this->activities->save([
+                "user_id"=>$userId,
+                "activity"=> "restored a user's expense"
+            ]);
+            return redirect()->to('/admin/archived/expenses')->with('message', 'Expense restored successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update expense.');
         }
     }
 
@@ -93,6 +106,18 @@ class Expenses extends BaseController
         $this->data['page_header'] = 'Expenses';
         $this->data['contents'] = [
             $this->folder_directory . 'view-expense',
+        ];
+        return self::render();
+    }
+    public function archived()
+    {
+        $this->data['expenses'] = $this->model->getArchived();
+        $this->data['categories'] = $this->categories->findAll();
+
+        $this->data['page_title'] = 'Expenses';
+        $this->data['page_header'] = 'Expenses';
+        $this->data['contents'] = [
+            $this->folder_directory . 'archived-expenses',
         ];
         return self::render();
     }

@@ -7,7 +7,10 @@ $routes->group(
         $routes->get('categories', 'Categories::index', ['filter' => 'group:superadmin']);
         $routes->get('expenses', 'Expenses::index', ['filter' => 'group:superadmin']);
         $routes->get('expenses/view/(:num)', 'Expenses::view/$1', ['filter' => 'group:superadmin']);
+        $routes->get('archived/expenses', 'Expenses::archived', ['filter' => 'group:superadmin']);
         $routes->post('expenses/update/(:num)', 'Expenses::update/$1', ['filter' => 'group:superadmin']);
+        $routes->post('expenses/delete/(:num)', 'Expenses::delete/$1', ['filter' => 'group:superadmin']);
+        $routes->post('expenses/restore/(:num)', 'Expenses::restore/$1', ['filter' => 'group:superadmin']);
         $routes->post('users/update/(:num)', 'Users::update/$1', ['filter' => 'group:superadmin']);
         $routes->post('users/delete/(:num)', 'Users::delete/$1', ['filter' => 'group:superadmin']);
     }

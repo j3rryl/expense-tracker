@@ -28,6 +28,16 @@ class Expenses extends Model
         
         return $builder->findAll();
     }
+    public function getArchived($admin=null)
+    {
+    
+        // Start building the query
+        $builder = $this->select('expenses.*, categories.name as category_name, users.username as user_name')
+                        ->join('users', 'expenses.user_id = users.id', 'left')
+                        ->join('categories', 'expenses.category_id = categories.id', 'left')
+                        ->orderBy('expenses.created_at', 'DESC');
+        return $builder->onlyDeleted()->findAll();
+    }
 
     public function getMonthlySums($admin=null)
     {

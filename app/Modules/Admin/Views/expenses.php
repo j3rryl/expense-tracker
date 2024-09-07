@@ -1,4 +1,9 @@
  <!-- Expenses -->
+ <div class="d-flex justify-content-end mb-3">
+<a role="button" class="btn btn-danger" href="/admin/archived/expenses">
+    Archived Expenses
+</a>
+ </div>
  <div class="col-12">
     <div class="card recent-sales overflow-auto">
     <div class="card-body">
