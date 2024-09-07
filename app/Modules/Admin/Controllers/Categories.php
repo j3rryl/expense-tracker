@@ -4,17 +4,21 @@ namespace App\Modules\Admin\Controllers;
 
 use App\Controllers\BaseController;
 use App\Modules\Categories\Models\Categories as CategoryModel;
+use App\Modules\Activities\Models\Activities;
 
 class Categories extends BaseController
 {
     protected $folder_directory = "Modules\\Admin\\Views\\";
     protected $model;
+    protected $activities;
     protected $data = [];
     protected $rules = [];
 
     public function __construct()
     {
         $this->model = new CategoryModel;
+        $this->activities = new Activities;
+
     }
 
     public function delete($id)

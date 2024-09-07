@@ -1,4 +1,12 @@
  <!-- Categories -->
+ <div class="d-flex justify-content-end mb-3 gap-2">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveModal">
+        New Category
+    </button>
+    <a role="button" class="btn btn-danger" href="/admin/archived/categories">
+        Archived Categories
+    </a>
+ </div>
  <div class="col-12">
               <div class="card recent-sales overflow-auto">
                 <div class="card-body">
@@ -10,6 +18,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Created At</th>
+                        <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -22,7 +31,59 @@
                         $formattedDate = $date->format('j F Y g.i a'); 
                         echo $formattedDate; 
                         ?></td>
+                         <td>
+                            <div class="d-flex justify-content-start align-items-center gap-3">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<?php echo $category['id']; ?>"><i class="bi bi-pencil-square me-1"></i></button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $category['id']; ?>"><i class="bi bi-trash me-1"></i></button>
+                            </div>
+                        </td>
                       </tr>
+
+                      <div class="modal fade" id="deleteModal<?php echo $category['id']; ?>" tabindex="-1">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Remove <?php echo $category['name']; ?></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="g-3" method="post" action="<?= site_url('admin/categories/archive/' . $category['id']) ?>">
+                                    <?= csrf_field() ?>
+                                    <p class="mb-3">Are you sure you want to remove this category ?</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="modal fade" id="updateModal<?php echo $category['id']; ?>" tabindex="-1">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Update <?php echo $category['name']; ?></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="g-3" method="post" action="<?= site_url('admin/categories/update/' . $category['id']) ?>">
+                                    <?= csrf_field() ?>
+                                    <div class="row mb-3">
+                                        <div class="col-12 mb-3">
+                                            <label for="inputNanme4" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="inputNanme4" name="name" value="<?php echo $category['name']; ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                       <?php endforeach; ?>
                     </tbody>
                   </table>
@@ -31,3 +92,30 @@
 
               </div>
             </div><!-- End Categories -->
+
+
+            <div class="modal fade" id="saveModal" tabindex="-1">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">New Category</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="g-3" method="post" action="<?= site_url('admin/categories/save') ?>">
+                                    <?= csrf_field() ?>
+                                    <div class="row mb-3">
+                                        <div class="col-12 mb-3">
+                                            <label for="inputNanme4" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="inputNanme4" name="name" required>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
