@@ -189,7 +189,7 @@
                 <div class="activity-item d-flex">
                   <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                   <div class="activity-content">
-                    <p><?php echo $activity['user_name'] ." ".$activity['activity']; ?></p>
+                    <p><?php echo ucfirst($activity['user_name']) ." ".$activity['activity']; ?></p>
                   </div>
                 </div><!-- End activity item-->
             <?php endforeach; ?>

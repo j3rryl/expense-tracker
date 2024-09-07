@@ -5,6 +5,9 @@ $routes->group(
         $routes->get('dashboard', 'Dashboard::index', ['filter' => 'group:superadmin']);
         $routes->get('users', 'Users::index', ['filter' => 'group:superadmin']);
         $routes->get('categories', 'Categories::index', ['filter' => 'group:superadmin']);
+        $routes->get('expenses', 'Expenses::index', ['filter' => 'group:superadmin']);
+        $routes->get('expenses/view/(:num)', 'Expenses::view/$1', ['filter' => 'group:superadmin']);
+        $routes->post('expenses/update/(:num)', 'Expenses::update/$1', ['filter' => 'group:superadmin']);
         $routes->post('users/update/(:num)', 'Users::update/$1', ['filter' => 'group:superadmin']);
         $routes->post('users/delete/(:num)', 'Users::delete/$1', ['filter' => 'group:superadmin']);
     }

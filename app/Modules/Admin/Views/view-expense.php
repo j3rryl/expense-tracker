@@ -6,7 +6,7 @@
                 <p class="text-muted">Date: <span class="text-dark"><?php echo $expense['date']; ?></span></p>
             </div>
             <div class="col-md-3">
-                <p class="text-muted">Amount: <span class="text-dark"><?php  number_format($expense['amount'], 2); ?></span></p>
+                <p class="text-muted">Amount: <span class="text-dark"><?php echo number_format($expense['amount'], 2); ?></span></p>
             </div>
         </div>
         <div class="row mb-3">
