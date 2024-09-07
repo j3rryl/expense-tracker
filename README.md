@@ -10,6 +10,7 @@ This is a simple expense tracker made in Codeigniter HMVC
 - [Database Setup and Management](#database-setup-and-management)
 - [Running the Project](#running-the-project)
 - [Technologies Used](#technologies-used)
+- [Assumptions Made](#assumptions-made)
 - [License](#license)
 
 ## Introduction
@@ -153,6 +154,13 @@ php spark serve
 - To create an expense go to expenses page and click `New Expense`.
 
   ![alt text](image-13.png)
+
+## Assumptions Made
+
+1. Pagination: It is assumed that pagination will be implemented at a later stage to handle large sets of data.
+2. Soft Deletes: Soft delete functionality is used throughout the system. Soft deleted records are labeled as `archived` and stored in the `deleted_at` column.
+3. PHP Requirements: The system requires PHP version greater than 7.
+4. PHP Intl Extension: The PHP Internationalization extension `(intl)` must be enabled in the php.ini configuration file.
 
 ## Technologies Used
 
