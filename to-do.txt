@@ -9,3 +9,5 @@ php spark migrate
 
 
 Pagination
+
+Ensure version php is okay

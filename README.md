@@ -41,7 +41,7 @@ To get started with the project, follow these steps to set it up locally:
 
 # Database Setup and Management
 
-This project utilizes [Codeigniter Query Builder](https://codeigniter.com/user_guide/database/query_builder.html) as an ORM for database management. Follow the instructions below to set up, migrate, and seed the database.
+This project utilizes [CodeIgniter Query Builder](https://codeigniter.com/user_guide/database/query_builder.html) as an ORM for database management. Follow the instructions below to set up, migrate, and seed the database.
 
 1. **Prerequisites:**
    Ensure you have the necessary environment variables configured for database access.
@@ -56,6 +56,47 @@ This project utilizes [Codeigniter Query Builder](https://codeigniter.com/user_g
    ```bash
    php spark simpletine:setup
    ```
+
+   ![alt text](image.png)
+
+- Enter y and press `Enter`
+
+  ![alt text](image-1.png)
+
+- Enter a new database name and press `Enter`, in this case we are using expense_tracker.
+  This is very crucial, **ensure the database name matches the one in the .env** here to avoid errors in the next setup.
+
+  ![alt text](image-2.png)
+
+- Enter y and press `Enter`
+
+  ![alt text](image-3.png)
+
+- This is very crucial, **ensure you have pressed n** here to avoid overwriting existing configurations.
+  Enter **n** and press `Enter`
+
+  ![alt text](image-4.png)
+
+- This is very crucial, **ensure you have pressed n** here to avoid overwriting existing configurations.
+  Enter **n** and press `Enter`
+
+  ![alt text](image-5.png)
+
+- This is very crucial, **ensure you have pressed n** here to avoid overwriting existing configurations.
+  Enter **n** and press `Enter`
+
+  ![alt text](image-6.png)
+
+- Enter y and press `Enter`
+
+  ![alt text](image-7.png)
+
+- This is very crucial, **ensure you have pressed n** here to avoid overwriting existing assets.
+  Enter **n** and press `Enter`
+
+- ![alt text](image-8.png)
+
+- If all goes well, that should be the output, with all the prompts used displayed.
 
 3. **Running the migrations:**
    To apply all pending migrations and set up the initial database schema, run:
