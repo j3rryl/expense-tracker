@@ -29,5 +29,14 @@ class Expenses extends Model
                     ->groupBy('category_id, month')
                     ->findAll();
     }
+
+    public function getTotalByCategory()
+    {
+        $userId = session()->get("user_id");
+        return $this->select('category_id, SUM(amount) as total_amount')
+                    ->where('expenses.user_id', $userId)
+                    ->groupBy('category_id')
+                    ->findAll();
+    }
     
 }

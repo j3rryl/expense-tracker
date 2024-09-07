@@ -42,7 +42,7 @@ class Index extends BaseController
             $totalAmount = $data['total_amount'];
 
             if (!isset($categories[$categoryId])) {
-                $category =  $this->categories->find($categoryId);
+                $category = $this->categories->find($categoryId);
                 $categories[$categoryId] = $category['name'];
             }
 
@@ -63,6 +63,35 @@ class Index extends BaseController
         
         $this->data['chartSeries'] = $chartSeries;
         $this->data['months'] = $monthNames;
+
+
+        $categories = []; 
+        $expensesData = $this->expenses->getTotalByCategory();
+        foreach ($expensesData as $data) {
+            $categoryId = $data['category_id'];
+            $totalAmount = $data['total_amount'];
+
+            if (!isset($categories[$categoryId])) {
+                $category = $this->categories->find($categoryId);
+                $categories[$categoryId] = [
+                    'name' => $category['name'],
+                    'total_amount' => 0
+                ];
+            }
+
+            $categories[$categoryId]['total_amount'] += $totalAmount;
+        }
+
+        $pieSeries = [];
+        foreach ($categories as $category) {
+            $pieSeries[] = [
+                'name' => $category['name'],
+                'data' => $category['total_amount']
+            ];
+        }
+
+        $this->data['pieSeries'] = $pieSeries;
+
 
         $this->expenses = $this->expenses->getExpensesWithCategories();
         $this->data['expense_count'] = count($this->expenses);
