@@ -8,6 +8,9 @@ $routes->group(
         $routes->get('expenses', 'Expenses::index', ['filter' => 'group:superadmin']);
         $routes->get('expenses/view/(:num)', 'Expenses::view/$1', ['filter' => 'group:superadmin']);
         $routes->get('archived/expenses', 'Expenses::archived', ['filter' => 'group:superadmin']);
+        $routes->get('archived/users', 'Users::archived', ['filter' => 'group:superadmin']);
+        $routes->post('users/remove/(:num)', 'Users::remove/$1', ['filter' => 'group:superadmin']);
+        $routes->post('users/restore/(:num)', 'Users::restore/$1', ['filter' => 'group:superadmin']);
         $routes->post('expenses/update/(:num)', 'Expenses::update/$1', ['filter' => 'group:superadmin']);
         $routes->post('expenses/delete/(:num)', 'Expenses::delete/$1', ['filter' => 'group:superadmin']);
         $routes->post('expenses/restore/(:num)', 'Expenses::restore/$1', ['filter' => 'group:superadmin']);

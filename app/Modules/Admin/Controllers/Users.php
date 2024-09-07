@@ -62,14 +62,55 @@ class Users extends BaseController
         $userId = session()->get("user_id");
             $this->activities->save([
                 "user_id"=>$userId,
-                "activity"=> "deleted a user"
+                "activity"=> "archived a user"
             ]);
-            return redirect()->to('/admin/users')->with('message', 'User deleted successfully.');
+            return redirect()->to('/admin/users')->with('message', 'User archived successfully.');
         } else {
             return redirect()->back()->with('error', 'Failed to delete user.');
         }
     }
 
+    public function remove($id)
+    {
+        if ($this->users->where('id', $id)->purgeDeleted()) {
+        $userId = session()->get("user_id");
+            $this->activities->save([
+                "user_id"=>$userId,
+                "activity"=> "deleted a user permanently"
+            ]);
+            return redirect()->to('/admin/archived/users')->with('message', 'User permanently deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to delete user.');
+        }
+    }
+    public function restore($id)
+    {
+        if ($this->users->update($id, ['deleted_at' => null])) {
+        $userId = session()->get("user_id");
+            $this->activities->save([
+                "user_id"=>$userId,
+                "activity"=> "restored a user"
+            ]);
+            return redirect()->to('/admin/archived/users')->with('message', 'User restored successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update user.');
+        }
+    }
+
+    public function archived()
+    {
+        if(!user_id()) {
+            return redirect()->route('login');
+        }
+        $userId = session()->get("user_id");
+        $this->data['users'] = $this->users->where('users.id !=', $userId)->onlyDeleted()->findAll();
+        $this->data['page_title'] = 'Admin - Users';
+        $this->data['page_header'] = 'Users';
+        $this->data['contents'] = [
+            $this->folder_directory . 'archived-users',
+        ];
+        return self::render();
+    }
     public function index()
     {
         if(!user_id()) {

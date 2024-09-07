@@ -9,7 +9,7 @@ class UserModel extends Model
     protected $primaryKey = 'id';  
     protected $useSoftDeletes   = true;
     protected $deletedField = 'deleted_at';
-    protected $allowedFields = ['username'];
+    protected $allowedFields = ['username', 'deleted_at'];
 
     // Method to get user
     public function getUser($userId)
