@@ -5,6 +5,7 @@ namespace App\Modules\Dashboard\Controllers;
 use App\Controllers\BaseController;
 use App\Modules\Expenses\Models\Expenses;
 use App\Modules\Categories\Models\Categories;
+use App\Modules\Activities\Models\Activities;
 
 class Index extends BaseController
 {
@@ -19,6 +20,7 @@ class Index extends BaseController
     {
         $this->expenses = new Expenses();
         $this->categories = new Categories();
+        $this->activities = new Activities();
     }
 
     public function index()
@@ -95,6 +97,7 @@ class Index extends BaseController
 
         $this->expenses = $this->expenses->getExpensesWithCategories();
         $this->data['expense_count'] = count($this->expenses);
+        $this->data['activities'] = $this->activities->getActivities();
         $this->data['expense_amount'] = array_sum(array_column($this->expenses, 'amount'));
         $this->data['expense_categories'] = count(array_unique(array_column($this->expenses, 'category_id')));
         $this->data['page_title'] = 'Dashboard';

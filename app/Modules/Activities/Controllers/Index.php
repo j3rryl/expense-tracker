@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Modules\Activites\Controllers;
+namespace App\Modules\Activities\Controllers;
 
 use App\Controllers\BaseController;
-use App\Modules\Activites\Models\Activites;
+use App\Modules\Activities\Models\Activities;
 
 class Index extends BaseController
 {
-    protected $folder_directory = "Modules\\Activites\\Views\\";
+    protected $folder_directory = "Modules\\Activities\\Views\\";
     protected $model;
     protected $data = [];
     protected $rules = [];
 
     public function __construct()
     {
-        $this->model = new Activites;
+        $this->model = new Activities;
     }
 
     public function index()
