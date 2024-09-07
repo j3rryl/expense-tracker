@@ -161,6 +161,7 @@ php spark serve
 2. Soft Deletes: Soft delete functionality is used throughout the system. Soft deleted records are labeled as `archived` and stored in the `deleted_at` column.
 3. PHP Requirements: The system requires PHP version greater than 7.
 4. PHP Intl Extension: The PHP Internationalization extension `(intl)` must be enabled in the php.ini configuration file.
+5. Server Environment: Apache XAMPP with MySQL is used as the server environment.
 
 ## Technologies Used
 
