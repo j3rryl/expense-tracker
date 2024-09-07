@@ -452,7 +452,6 @@ class Auth extends ShieldAuth
         }
         $session->set([
             'user_id' => $user['id'],      
-            'name' => $user['name'],      
             'user_name' => $user['username'],
             'user_group' => $userGroup['group'], 
         ]);
