@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Modules\Expenses\Controllers;
+namespace App\Modules\Dashboard\Controllers;
 
 use App\Controllers\BaseController;
-use App\Modules\Expenses\Models\Expenses;
 
 class Index extends BaseController
 {
+    protected $folder_directory = "Modules\\Dashboard\\Views\\";
     protected $parent_directory = "Modules\\Views\\index";
-    protected $folder_directory = "Modules\\Expenses\\Views\\";
     protected $model;
     protected $data = [];
     protected $rules = [];
 
     public function __construct()
     {
-        $this->model = new Expenses;
     }
 
     public function index()
     {
-        $this->data['page_title'] = 'Expenses';
-        $this->data['page_header'] = 'Expenses';
+        $this->data['page_title'] = 'Dashboard';
+        $this->data['page_header'] = 'Dashboard';
         $this->data['contents'] = [
             $this->folder_directory . 'index',
         ];
