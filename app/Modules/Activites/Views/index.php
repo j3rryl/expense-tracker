@@ -1,0 +1,1 @@
+<h1>Activites Index Page</h1>

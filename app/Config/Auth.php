@@ -46,8 +46,8 @@ class Auth extends ShieldAuth
      * --------------------------------------------------------------------
      */
     public array $views = [
-        'login'                       => 'Simpletine\HMVCShield\Views\auth\login',
-        'register'                    => 'Simpletine\HMVCShield\Views\auth\register',
+        'login'                       => '\App\Views\authentication\login',
+        'register'                    => '\App\Views\authentication\register',
         'layout'                      => '\CodeIgniter\Shield\Views\layout',
         'action_email_2fa'            => '\CodeIgniter\Shield\Views\email_2fa_show',
         'action_email_2fa_verify'     => '\CodeIgniter\Shield\Views\email_2fa_verify',
