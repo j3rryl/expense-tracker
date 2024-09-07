@@ -50,6 +50,44 @@ class Index extends BaseController
             return redirect()->back()->withInput()->with('error', 'Failed to save expense.');
         }
     }
+    public function update($id)
+    {
+        // Validate form input
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'name' => 'required|string',
+            'amount' => 'required|numeric',
+            'category_id' => 'required|integer'
+        ]);
+
+        if (! $this->validate($validation->getRules())) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
+
+        // Retrieve form data
+        $data = [
+            'id' => $id,
+            'name' => $this->request->getPost('name'),
+            'amount' => $this->request->getPost('amount'),
+            'category_id' => $this->request->getPost('category_id'),
+        ];
+
+        if ($this->model->save($data)) {
+            return redirect()->to('/expenses')->with('message', 'Expense saved successfully.');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Failed to save expense.');
+        }
+    }
+
+    public function delete($id)
+    {
+        if ($this->model->delete($id)) {
+            return redirect()->to('/expenses')->with('message', 'Expense deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to delete expense.');
+        }
+    }
+
     public function index()
     {
         $this->data['expenses'] = $this->model->getExpensesWithCategories();
