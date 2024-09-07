@@ -31,13 +31,13 @@ class UserSeeder extends Seeder
 
         $user = new User([
             'username' => "normal",
-            'email'    => "normal@gmail.com",
+            'email'    => "normal@normal.com",
             'password' => 'password',
         ]);
         $users->save($user);
         $user = $users->findById($users->getInsertID());
         $user->addGroup('user');
-        
+
         $activities->save([
             "user_id"=> 1,
             "activity"=> "created new users"
