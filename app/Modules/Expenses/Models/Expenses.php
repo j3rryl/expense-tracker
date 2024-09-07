@@ -10,5 +10,13 @@ class Expenses extends Model
     protected $useTimestamps    = true;
     protected $useSoftDeletes   = true;
     protected $allowedFields = ['name', 'amount', 'category_id', 'user_id', 'created_at', 'updated_at', 'deleted_at']; 
-
+    public function getExpensesWithCategories()
+    {
+        $userId = session()->get("user_id");
+        return $this->select('expenses.*, categories.name as category_name')
+                    ->where('expenses.user_id', $userId)
+                    ->join('categories', 'expenses.category_id = categories.id', 'left')
+                    ->orderBy('expenses.created_at', 'DESC')
+                    ->findAll();
+    }
 }

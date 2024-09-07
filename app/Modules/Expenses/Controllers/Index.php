@@ -52,7 +52,7 @@ class Index extends BaseController
     }
     public function index()
     {
-        $this->data['expenses'] = $this->model->findAll();
+        $this->data['expenses'] = $this->model->getExpensesWithCategories();
         $this->data['categories'] = $this->categories->findAll();
         $this->data['page_title'] = 'Expenses';
         $this->data['page_header'] = 'Expenses';

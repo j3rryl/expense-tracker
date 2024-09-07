@@ -285,7 +285,8 @@
     <section class="section dashboard">
     <?= show_errors() ?>
     <?php if (session('message') !== null) : ?>
-      <div class="alert alert-success" role="alert"><?= session('message') ?>
+      <div class="alert alert-success d-flex justify-content-between" role="alert">
+      <p><?= session('message') ?></p>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <?php endif ?>

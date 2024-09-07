@@ -23,13 +23,15 @@
     </div>
 
     <div class="card-body">
-        <h5 class="card-title">Expenses <span>| Today</span></h5>
+        <h5 class="card-title">Expenses</h5>
 
         <table class="table">
         <thead>
             <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Category</th>
             <th scope="col">Created At</th>
             </tr>
         </thead>
@@ -38,6 +40,8 @@
             <tr>
             <th scope="row"><a href="#"><?php echo $expense['id']; ?></a></th>
             <td><?php echo $expense['name']; ?></td>
+            <td><?php echo number_format($expense['amount'],2); ?></td>
+            <td><?php echo $expense['category_name']; ?></td>
             <td><?php 
             $date = new DateTime($expense['created_at']);
             $formattedDate = $date->format('j F Y g.i a'); 
